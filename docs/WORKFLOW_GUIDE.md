@@ -1,6 +1,6 @@
 # Planning Workflow Quick Reference
 
-Quick commands and workflows for SmartKeys v2 development.
+Quick commands and workflows for Git Project Planner development.
 
 ---
 
@@ -40,7 +40,7 @@ Scripts/planning/sync-sprint.sh
 ### Start Task
 ```bash
 # 1. Check task details
-cat tasks/*/SMK-XXX-*.md
+cat tasks/*/TASK-XXX-*.md
 
 # 2. Create feature branch
 git checkout main
@@ -56,7 +56,7 @@ git checkout -b feature/smk-xxx-description
 ```bash
 # Regular commits
 git add .
-git commit -m "feat(SMK-XXX): Clear description"
+git commit -m "feat(TASK-XXX): Clear description"
 
 # Check progress
 git log --oneline -5
@@ -70,12 +70,12 @@ vim planning/current-sprint.md
 ```bash
 # 1. Final commit and push
 git add .
-git commit -m "feat(SMK-XXX): Complete implementation"
+git commit -m "feat(TASK-XXX): Complete implementation"
 git push origin feature/smk-xxx-description
 
 # 2. Create PR
 gh pr create \
-  --title "SMK-XXX: Task title" \
+  --title "TASK-XXX: Task title" \
   --body "$(cat <<EOF
 ## Summary
 Brief description of what was done
@@ -154,7 +154,7 @@ vim planning/current-sprint.md
 Add to Blockers section:
 ```markdown
 ## Blockers
-- SMK-XXX: Brief description of blocker
+- TASK-XXX: Brief description of blocker
   - Impact: What's blocked
   - Action: What we're doing about it
   - ETA: When we expect resolution
@@ -201,11 +201,11 @@ Add retrospective section:
 ## Sprint N Summary
 
 ### Completed (X/Y)
-- ✅ SMK-XXX: Description
-- ✅ SMK-YYY: Description
+- ✅ TASK-XXX: Description
+- ✅ TASK-YYY: Description
 
 ### Not Completed
-- ❌ SMK-ZZZ: Reason
+- ❌ TASK-ZZZ: Reason
 
 ### Metrics
 - Planned: Y tasks, XXh
@@ -243,11 +243,11 @@ git push origin main
 ### Task Management
 ```bash
 # Find task file
-fd SMK-013
+fd TASK-013
 find tasks -name "*013*"
 
 # View task
-cat tasks/*/SMK-013-*.md
+cat tasks/*/TASK-013-*.md
 
 # List all tasks
 find tasks -name "*.md" -type f | sort
@@ -307,13 +307,13 @@ gh pr merge --squash
 ### New Task Quick Template
 ```markdown
 ---
-task_id: "SMK-XXX"
+task_id: "TASK-XXX"
 title: "Clear title"
 priority: "High|Medium|Low"
 estimate: "Xh"
 ---
 
-# SMK-XXX: Title
+# TASK-XXX: Title
 
 ## Objective
 One sentence goal
@@ -349,7 +349,7 @@ Closes #XXX
 ### Blocker Template
 ```markdown
 ## Blocker: [Title]
-- **Task**: SMK-XXX
+- **Task**: TASK-XXX
 - **Issue**: What's blocking
 - **Impact**: What can't proceed
 - **Action**: What we're doing
@@ -364,11 +364,11 @@ Closes #XXX
 ### Task Not Synced
 ```bash
 # Check if issue exists
-gh issue list --search "SMK-XXX"
+gh issue list --search "TASK-XXX"
 
 # Create if missing
-gh issue create --title "SMK-XXX: Title" \
-                --body "See tasks/.../SMK-XXX.md"
+gh issue create --title "TASK-XXX: Title" \
+                --body "See tasks/.../TASK-XXX.md"
 
 # Link to project
 gh project item-add 1 --owner mnemoverse --url [issue-url]
@@ -409,7 +409,7 @@ gh project item-list 1 --owner mnemoverse | grep "Blocked"
 
 2. **Check examples**
    - Previous sprints: `planning/completed-sprints/`
-   - Completed tasks: `git log --grep="SMK-"`
+   - Completed tasks: `git log --grep="TASK-"`
 
 3. **Debug commands**
    ```bash

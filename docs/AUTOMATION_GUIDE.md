@@ -2,7 +2,7 @@
 
 ## Overview
 
-The SmartKeys v2 planning system includes several automation tools to reduce manual work and maintain consistency.
+The Git Project Planner planning system includes several automation tools to reduce manual work and maintain consistency.
 
 ## 🤖 Automated Components
 
@@ -81,7 +81,7 @@ Runs automatically on:
 cat planning/current-sprint.md
 
 # Update task statuses in files
-vim tasks/week2/SMK-XXX-*.md
+vim tasks/week2/TASK-XXX-*.md
 
 # Update sprint progress
 ./Scripts/planning/update-sprint.sh

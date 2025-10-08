@@ -1,4 +1,4 @@
-# SmartKeys v2 Planning System
+# Git Project Planner - Planning System
 
 ## Table of Contents
 
@@ -19,10 +19,27 @@
 
 ## Introduction
 
-The SmartKeys v2 Planning System is a hybrid approach to project management that combines:
+The Git Project Planner is a hybrid approach to project management that combines:
 - **Git files as source of truth** - All specifications, plans, and history in version control
 - **GitHub Projects for visualization** - Interactive Kanban boards and progress tracking
-- **Minimal automation** - Scripts only where they save significant time
+- **Minimal automation** - Scripts ---
+
+## Summary
+
+The Git Project Planner provides:
+
+✅ **Clear task tracking** - Always know what to work on
+✅ **Historical record** - Git keeps everything
+✅ **Visual progress** - GitHub Project boards
+✅ **Flexible workflow** - Adapt as needed
+✅ **Minimal overhead** - Focus on building, not process
+
+Start simple, add complexity only where it provides value.
+
+---
+
+*Maintainer: Git Project Planner Team*
+```ave significant time
 
 ### Core Principles
 
@@ -101,10 +118,10 @@ planning/
 
 ```
 tasks/
-├── week1/                       # Legacy week-based organization
-│   └── SMK-*.md
-├── week2/
-│   └── SMK-*.md
+├── feature-x/                   # Feature-based organization
+│   └── TASK-*.md
+├── feature-y/
+│   └── TASK-*.md
 ├── planning-system/            # Meta tasks for planning system
 │   └── PS-*.md
 └── backlog/                    # Unscheduled tasks
@@ -127,7 +144,7 @@ tasks/
 ### Project Setup
 
 1. **Create Project**
-   - Name: "SmartKeys v2 Development"
+   - Name: "Project Development"
    - Visibility: Private (or as preferred)
    - Template: Basic Kanban
 
@@ -206,7 +223,7 @@ Roadmap (3 months)
 - **File**: `tasks/*/*.md`
 - **Duration**: 1-16 hours
 - **Detail**: Full specification with DoD
-- **Example**: "SMK-013: Wire correction pipeline"
+- **Example**: "TASK-013: Wire correction pipeline"
 
 ---
 
@@ -307,11 +324,11 @@ Roadmap (3 months)
 **Example**:
 ```markdown
 ---
-task_id: "SMK-013"
+task_id: "TASK-013"
 title: "Wire correction pipeline"
 estimate: "8h"
 priority: "High"
-dependencies: ["SMK-012"]
+dependencies: ["TASK-012"]
 ---
 ```
 
@@ -329,7 +346,7 @@ dependencies: ["SMK-012"]
 **Development Flow**:
 ```bash
 # 1. Start work
-git checkout -b feature/smk-013-correction-pipeline
+git checkout -b feature/task-013-correction-pipeline
 
 # 2. Move card in project
 # Ready → In Progress
@@ -337,11 +354,11 @@ git checkout -b feature/smk-013-correction-pipeline
 # 3. Development
 # ... write code ...
 git add .
-git commit -m "feat(SMK-013): Implement word buffering"
+git commit -m "feat(TASK-013): Implement word buffering"
 
 # 4. Create PR
 gh pr create \
-  --title "SMK-013: Wire correction pipeline" \
+  --title "TASK-013: Wire correction pipeline" \
   --body "Closes #123"
 ```
 
@@ -502,22 +519,25 @@ jobs:
 
 **Format**:
 ```markdown
+**Format**:
+```markdown
 ## Sprint N Retrospective
 
 ### Completed (4/5 tasks)
-- ✅ SMK-012: Coordinator
-- ✅ SMK-013: Pipeline
+- ✅ TASK-012: Coordinator
+- ✅ TASK-013: Pipeline
 - ✅ PS-001: Documentation
 - ✅ PS-002: Setup
 
 ### Not Completed
-- ❌ SMK-014: Tests (blocked by API change)
+- ❌ TASK-014: Tests (blocked by API change)
 
 ### Metrics
 - Velocity: 20h estimated, 22h actual
 - Accuracy: 90% (good!)
 
 ### Learnings
+```
 - Swift 6 concurrency requires more careful planning
 - Documentation-first approach working well
 
@@ -601,12 +621,12 @@ $ vim planning/current-sprint.md
 ## Tasks
 
 ### Ready
-- [ ] SMK-013: Wire correction pipeline (8h)
-- [ ] SMK-014: Integration tests (4h)
+- [ ] TASK-013: Wire correction pipeline (8h)
+- [ ] TASK-014: Integration tests (4h)
 - [ ] PS-002: Planning setup (2h)
 
 ### Backlog (if time)
-- [ ] SMK-015: Performance benchmarks (4h)
+- [ ] TASK-015: Performance benchmarks (4h)
 
 ## Progress
 📊 Completed: 0/3 tasks (0%)
@@ -615,8 +635,8 @@ $ vim planning/current-sprint.md
 
 #### Tuesday - Starting Work
 ```bash
-# Pick up SMK-013
-$ git checkout -b feature/smk-013-correction-pipeline
+# Pick up TASK-013
+$ git checkout -b feature/task-013-correction-pipeline
 # Move card to In Progress in GitHub Project
 # Update current-sprint.md status
 ```
@@ -626,7 +646,7 @@ $ git checkout -b feature/smk-013-correction-pipeline
 ## Tasks
 
 ### In Progress
-- [ ] SMK-013: Wire correction pipeline (8h, 50% complete)
+- [ ] TASK-013: Wire correction pipeline (8h, 50% complete)
   - ✅ Word buffer implemented
   - ⏳ Boundary detection in progress
   - ⏳ CorrectionEngine integration pending
@@ -635,16 +655,16 @@ $ git checkout -b feature/smk-013-correction-pipeline
 #### Thursday - Blocker
 ```markdown
 ## Blockers
-- SMK-013: CorrectionEngine API changed, need to update integration
-  - Action: Review SMK-005 changes
+- TASK-013: CorrectionEngine API changed, need to update integration
+  - Action: Review TASK-005 changes
   - Impact: 2h additional work
 ```
 
 #### Friday - Completion & Review
 ```bash
-# Complete SMK-013
-$ git commit -m "feat(SMK-013): Complete correction pipeline"
-$ gh pr create --title "SMK-013: Wire correction pipeline" \
+# Complete TASK-013
+$ git commit -m "feat(TASK-013): Complete correction pipeline"
+$ gh pr create --title "TASK-013: Wire correction pipeline" \
                --body "Closes #123"
 # PR merged, card moves to Done
 
@@ -662,20 +682,20 @@ $ vim planning/completed-sprints/sprint-02.md
 "We need performance benchmarks for the correction pipeline"
 
 # 2. Create task file
-$ vim tasks/backlog/SMK-015-performance-benchmarks.md
+$ vim tasks/backlog/TASK-015-performance-benchmarks.md
 ```
 
 ```markdown
 ---
-task_id: "SMK-015"
+task_id: "TASK-015"
 title: "Performance benchmarks for correction pipeline"
 priority: "Medium"
 status: "Backlog"
 estimate: "4h"
-dependencies: ["SMK-013"]
+dependencies: ["TASK-013"]
 ---
 
-# SMK-015: Performance Benchmarks
+# TASK-015: Performance Benchmarks
 
 ## Objective
 Establish performance baselines for correction pipeline.
@@ -696,8 +716,8 @@ Establish performance baselines for correction pipeline.
 ```bash
 # 3. Create GitHub Issue (optional, can wait for sprint planning)
 $ gh issue create \
-    --title "SMK-015: Performance benchmarks" \
-    --body "See tasks/backlog/SMK-015-performance-benchmarks.md" \
+    --title "TASK-015: Performance benchmarks" \
+    --body "See tasks/backlog/TASK-015-performance-benchmarks.md" \
     --label "enhancement,testing"
 ```
 
@@ -838,13 +858,13 @@ echo "Completed this week: $(gh issue list --state closed \
 - What's working well?
 - What's friction?
 - What's missing?
-- File issues at: github.com/mnemoverse/smartkeys-v2/issues
+- File issues at: github.com/mnemoverse/git-project-planner/issues
 
 ---
 
 ## Summary
 
-The SmartKeys v2 Planning System provides:
+The Git Project Planner provides:
 
 ✅ **Clear task tracking** - Always know what to work on
 ✅ **Historical record** - Git keeps everything
@@ -856,6 +876,6 @@ Start simple, add complexity only where it provides value.
 
 ---
 
-*Last Updated: October 2024*
+*Last Updated: January 2025*
 *Version: 1.0*
-*Maintainer: SmartKeys v2 Team*
+*Maintainer: Git Project Planner Team*

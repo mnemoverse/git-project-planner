@@ -146,19 +146,19 @@ Summary of what was delivered:
 ## Tasks
 
 ### In Progress
-- [ ] **SMK-013**: Wire correction pipeline (8h, 60% complete)
+- [ ] **TASK-013**: Wire correction pipeline (8h, 60% complete)
   - Assignee: @eduard
   - Started: Oct 8
   - Notes: Word buffer complete, boundary detection WIP
 
 ### Ready
-- [ ] **SMK-014**: Integration tests (4h)
+- [ ] **TASK-014**: Integration tests (4h)
   - Priority: ⚡ High
-  - Dependencies: SMK-013
+  - Dependencies: TASK-013
   - GitHub Issue: #124
 
 ### Completed
-- [x] **SMK-012**: Application coordinator (8h → 10h)
+- [x] **TASK-012**: Application coordinator (8h → 10h)
   - Completed: Oct 8
   - PR: #122
 - [x] **PS-001**: Planning documentation (2h → 3h)
@@ -166,7 +166,7 @@ Summary of what was delivered:
   - PR: #123
 
 ### Backlog (stretch goals)
-- [ ] **SMK-015**: Performance benchmarks (4h)
+- [ ] **TASK-015**: Performance benchmarks (4h)
 
 ## Progress
 
@@ -179,9 +179,9 @@ Summary of what was delivered:
 ### Daily Tracking
 | Day | Completed | Notes |
 |-----|-----------|-------|
-| Monday | SMK-012 done, SMK-013 started | Good momentum |
-| Tuesday | SMK-013 40%, PS-001 done | Documentation complete |
-| Wednesday | SMK-013 60% | Boundary detection tricky |
+| Monday | TASK-012 done, TASK-013 started | Good momentum |
+| Tuesday | TASK-013 40%, PS-001 done | Documentation complete |
+| Wednesday | TASK-013 60% | Boundary detection tricky |
 | Thursday | - | - |
 | Friday | - | - |
 
@@ -191,8 +191,8 @@ Summary of what was delivered:
 None currently
 
 ### Resolved Blockers
-- ~~**SMK-013**: Unclear CorrectionEngine API~~ ✅ Resolved Oct 9
-  - Resolution: Reviewed SMK-005 implementation
+- ~~**TASK-013**: Unclear CorrectionEngine API~~ ✅ Resolved Oct 9
+  - Resolution: Reviewed TASK-005 implementation
 
 ## Notes
 
@@ -213,7 +213,7 @@ None currently
 3. Write integration tests
 
 ### For Next Sprint
-- [ ] SMK-015: Performance benchmarks
+- [ ] TASK-015: Performance benchmarks
 - [ ] Full word buffering implementation
 - [ ] Multi-language testing
 

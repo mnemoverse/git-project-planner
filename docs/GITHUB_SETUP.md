@@ -14,7 +14,7 @@
 2. Click on "Projects" tab
 3. Click "New project" button
 4. Select "Board" template (for Kanban-style workflow)
-5. Name it: **SmartKeys v2 Development**
+5. Name it: **Git Project Planner Development**
 6. Description: **AI-enhanced keyboard correction system development tracker**
 7. Visibility: Set according to your preference (Public/Private)
 8. Click "Create project"

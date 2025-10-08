@@ -113,10 +113,10 @@ Additional context, decisions, changes:
 
 ### Task Breakdown
 #### Epic: Event Pipeline
-- [x] SMK-012: Application coordinator (8h) - Sprint 1
+- [x] TASK-012: Application coordinator (8h) - Sprint 1
 - [x] RESEARCH-001: Async patterns (16h) - Sprint 1
-- [ ] SMK-013: Wire correction pipeline (8h) - Sprint 2
-- [ ] SMK-014: Integration tests (4h) - Sprint 2
+- [ ] TASK-013: Wire correction pipeline (8h) - Sprint 2
+- [ ] TASK-014: Integration tests (4h) - Sprint 2
 
 ### Dependencies
 | Dependency | Type | Owner | Status | Notes |
