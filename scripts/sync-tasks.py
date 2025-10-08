@@ -107,10 +107,52 @@ except ModuleNotFoundError:  # pragma: no cover - handled by setup-venv.sh
 except ImportError:
     FrontmatterError = ValueError  # type: ignore[assignment]
 
+try:
+    import yaml
+except ModuleNotFoundError:  # pragma: no cover
+    print("⚠️  PyYAML not found. Install with: pip install PyYAML", file=sys.stderr)
+    sys.exit(1)
+
+
+def load_config() -> Dict:
+    """Load repository configuration from .planner-config.yml"""
+    config_path = Path(__file__).parent.parent / ".planner-config.yml"
+    
+    if not config_path.exists():
+        print(
+            f"⚠️  Configuration file not found: {config_path}\n"
+            "    Please create .planner-config.yml in project root.",
+            file=sys.stderr,
+        )
+        sys.exit(1)
+    
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            config = yaml.safe_load(f)
+            
+        # Validate required fields
+        if "repository" not in config:
+            print("⚠️  Missing 'repository' section in config", file=sys.stderr)
+            sys.exit(1)
+            
+        repo = config["repository"]
+        if "owner" not in repo or "name" not in repo:
+            print("⚠️  Missing 'owner' or 'name' in repository config", file=sys.stderr)
+            sys.exit(1)
+            
+        return config
+    except yaml.YAMLError as e:
+        print(f"⚠️  Error parsing config file: {e}", file=sys.stderr)
+        sys.exit(1)
+
+
+# Load configuration
+CONFIG = load_config()
+
 # Configuration
-REPO_OWNER = "mnemoverse"
-REPO_NAME = "smartkeys-v2"
-TASKS_DIR = Path(__file__).parent.parent.parent / "tasks"
+REPO_OWNER = CONFIG["repository"]["owner"]
+REPO_NAME = CONFIG["repository"]["name"]
+TASKS_DIR = Path(__file__).parent.parent / CONFIG.get("paths", {}).get("tasks", "tasks")
 DRY_RUN = "--dry-run" in sys.argv
 
 # Task status to GitHub label mapping
