@@ -153,11 +153,16 @@ paths:
 
 ## 🤝 Contributing
 
-This planning system was extracted from multiple production projects:
-- **smartkeys-v2** - Core planning system and scripts
-- **mnemoverse-arch** - Extended templates and categorization
+Contributions welcome! This is an open-source project built for the community.
 
-Contributions welcome! See issues for planned improvements.
+**Ways to contribute:**
+- Report issues or bugs
+- Suggest new features or improvements
+- Submit pull requests
+- Share your usage patterns
+- Improve documentation
+
+See [Issues](https://github.com/mnemoverse/git-project-planner/issues) for planned improvements and discussions.
 
 ## 📄 License
 
