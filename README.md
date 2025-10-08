@@ -1,5 +1,10 @@
 # Git Project Planner
 
+[![CI](https://github.com/mnemoverse/git-project-planner/workflows/CI/badge.svg)](https://github.com/mnemoverse/git-project-planner/actions)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](CHANGELOG.md)
+
 A comprehensive Git-based project planning system with GitHub integration.
 
 ## 🎯 Overview
@@ -11,6 +16,7 @@ Git Project Planner is a lightweight, flexible planning system that uses Git as 
 - **Flexible**: Works with any repository, any language
 - **Visual**: Optional GitHub Projects Kanban board integration
 - **AI-Friendly**: Structured for AI agents to understand full context
+- **Quality-First**: Pre-commit hooks and CI/CD ensure consistency
 
 > 💡 **Philosophy**: Everything in Git. Minimal external tools. Automate everything possible. See [VISION.md](VISION.md) for the full picture.
 
@@ -70,12 +76,16 @@ vim tasks/TASK-001-my-first-task.md
 - **WORKFLOW_GUIDE.md** - Daily workflow quick reference
 - **AUTOMATION_GUIDE.md** - Scripts and CI/CD integration
 - **GITHUB_SETUP.md** - GitHub Projects configuration
+- **GIT_HOOKS_GUIDE.md** - Pre-commit hooks and quality checks
+- **USAGE_SCENARIOS.md** - Detailed usage patterns
 - **templates/** - Task, sprint, and issue templates
 
 ### Scripts (`scripts/`)
 - **setup-project.sh** - Initialize planning system
+- **setup-hooks.sh** - Install Git hooks
 - **sync-tasks.py** - Sync tasks to GitHub Issues
 - **update-sprint.sh** - Update sprint progress
+- **validate-all.sh** - Run all quality checks locally
 - **sync-project-fields.sh** - Sync GitHub Project fields
 - **setup-venv.sh** - Python environment setup
 
@@ -93,6 +103,49 @@ vim tasks/TASK-001-my-first-task.md
 - ✅ **Task templates** - Consistent task specifications
 - ✅ **Automation scripts** - Reduce manual synchronization work
 - ✅ **Flexible structure** - Adapt to your workflow
+- ✅ **Quality checks** - Pre-commit hooks and CI/CD
+
+## ✨ Quality & Automation
+
+### Pre-commit Hooks
+
+Automatic checks before every commit:
+- Markdown linting
+- YAML validation
+- Shell script linting
+- Secret detection
+- Trailing whitespace removal
+
+```bash
+# Setup (one-time)
+./scripts/setup-hooks.sh
+
+# Hooks run automatically on commit
+git commit -m "feat: Add new feature"
+```
+
+See [Git Hooks Guide](docs/GIT_HOOKS_GUIDE.md) for details.
+
+### Continuous Integration
+
+Automated validation on every PR:
+- ✅ Lint all markdown, YAML, shell scripts
+- ✅ Validate task naming conventions
+- ✅ Check for broken links
+- ✅ Test script syntax
+- ✅ Security scans
+
+See [Automation Guide](docs/AUTOMATION_GUIDE.md#-github-actions-cicd) for configuration.
+
+### Local Validation
+
+```bash
+# Run all checks locally
+./scripts/validate-all.sh
+
+# Or use pre-commit directly
+pre-commit run --all-files
+```
 
 ## 📖 Core Concepts
 
@@ -194,6 +247,13 @@ MIT License - see LICENSE file
 **Automation-first**: Scripts and hooks do the boring work
 
 > 📖 **Read the full vision**: [VISION.md](VISION.md) explains why we built this and how hybrid teams (humans + AI) can work together in a shared, version-controlled context.
+
+## 📝 Documentation
+
+- [Structure Overview](STRUCTURE.md) - Repository organization
+- [Contributing Guidelines](CONTRIBUTING.md) - How to contribute
+- [Changelog](CHANGELOG.md) - Version history and release notes
+- [Complete Documentation](docs/) - All guides and templates
 
 ---
 

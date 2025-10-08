@@ -255,8 +255,153 @@ git log --format="" --name-only planning/current-sprint.md | \
 - [ ] Sprint health scoring
 - [ ] Predictive completion dates
 
-## 📚 Related Documentation
+## � GitHub Actions CI/CD
 
+### Overview
+
+Automated quality checks and validation run on every pull request and push to `main`. Ensures code quality without manual effort.
+
+### Workflow Configuration
+
+**File**: `.github/workflows/ci.yml`
+
+**Triggers**:
+- Pull requests to `main` branch
+- Pushes to `main` branch
+- Manual workflow dispatch
+
+**Jobs**:
+
+| Job | Purpose | Duration |
+|-----|---------|----------|
+| **lint** | Markdown, YAML, Shell linting | ~30s |
+| **test-scripts** | Python/Shell syntax validation | ~15s |
+| **security** | Secret detection | ~20s |
+| **summary** | Aggregate results | ~5s |
+
+### Status Badges
+
+Add to your `README.md`:
+
+```markdown
+[![CI](https://github.com/YOUR_ORG/YOUR_REPO/workflows/CI/badge.svg)](https://github.com/YOUR_ORG/YOUR_REPO/actions)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+```
+
+### Local CI Simulation
+
+Run same checks locally before pushing:
+
+```bash
+# All checks
+./scripts/validate-all.sh
+
+# Just pre-commit hooks
+pre-commit run --all-files
+
+# Specific check
+markdownlint docs/**/*.md
+```
+
+### Secrets Management
+
+**Required secrets** (none for basic usage):
+- `GITHUB_TOKEN` - Auto-provided by GitHub Actions
+
+**Optional secrets** (for advanced features):
+- `SLACK_WEBHOOK` - Notifications
+- `DISCORD_WEBHOOK` - Notifications
+- `GH_TOKEN` - Enhanced GitHub API access
+
+To add secrets:
+```bash
+# Via GitHub CLI
+gh secret set SLACK_WEBHOOK
+
+# Or via web UI:
+# Settings > Secrets and variables > Actions > New repository secret
+```
+
+### Workflow Customization
+
+#### Skip CI for Specific Commits
+
+```bash
+git commit -m "docs: Update README [skip ci]"
+```
+
+#### Run CI on Draft PRs
+
+Edit `.github/workflows/ci.yml`:
+```yaml
+on:
+  pull_request:
+    types: [opened, synchronize, reopened, ready_for_review]
+```
+
+#### Add Custom Validation
+
+```yaml
+- name: Custom validation
+  run: |
+    # Your custom checks here
+    ./scripts/my-custom-check.sh
+```
+
+### Performance Optimization
+
+**Current Performance**:
+- Total CI time: ~1-2 minutes
+- Cached dependencies: ~30s saved per run
+
+**Optimization Tips**:
+1. Use caching for dependencies
+2. Run independent jobs in parallel
+3. Skip unchanged paths
+4. Use `continue-on-error` for soft gates
+
+### Troubleshooting CI
+
+#### "Action failed: Lint & Validate"
+
+```bash
+# Run locally to see details
+pre-commit run --all-files --verbose
+
+# Check specific failing hook
+pre-commit run markdownlint --all-files
+```
+
+#### "Python module not found"
+
+Check `requirements.txt` is up-to-date:
+```bash
+pip freeze > scripts/requirements.txt
+```
+
+#### "Permission denied" for scripts
+
+```bash
+# Fix permissions
+find scripts -name "*.sh" -exec chmod +x {} \;
+
+# Commit changes
+git add scripts/
+git commit -m "fix: Script permissions"
+```
+
+### CI Best Practices
+
+1. **Keep CI fast**: <2 minutes total
+2. **Run locally first**: `./scripts/validate-all.sh`
+3. **Don't skip checks**: Fix issues, don't bypass
+4. **Monitor trends**: Watch for increasing CI times
+5. **Update dependencies**: Keep actions up-to-date
+
+## �📚 Related Documentation
+
+- [Git Hooks Guide](GIT_HOOKS_GUIDE.md) - Local pre-commit setup
 - [Planning System Overview](PLANNING_SYSTEM.md)
 - [Workflow Guide](WORKFLOW_GUIDE.md)
 - [Sprint Template](SPRINT_TEMPLATE.md)

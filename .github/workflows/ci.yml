@@ -1,0 +1,116 @@
+name: CI
+
+on:
+    pull_request:
+        branches: [main]
+    push:
+        branches: [main]
+
+concurrency:
+    group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+    cancel-in-progress: true
+
+permissions:
+    contents: read
+    checks: write
+
+jobs:
+    lint:
+        name: Lint & Validate
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11"
+                  cache: "pip"
+
+            - name: Install dependencies
+              run: |
+                  pip install --upgrade pip
+                  pip install pre-commit markdownlint-cli yamllint shellcheck-py
+
+            - name: Run pre-commit checks
+              run: |
+                  pre-commit run --all-files --show-diff-on-failure
+
+            - name: Validate task files structure
+              run: |
+                  # Check that task files follow naming convention
+                  if find examples/tasks -name "*.md" | grep -v "TASK-[0-9]"; then
+                    echo "❌ Task files must follow TASK-XXX-name.md format"
+                    exit 1
+                  fi
+                  echo "✅ Task naming convention validated"
+
+            - name: Check for broken internal links
+              run: |
+                  # Simple check for broken markdown links
+                  if grep -r "\](.*\.md)" docs/ examples/ | grep -v "http" | while read -r line; do
+                    file=$(echo "$line" | cut -d: -f1)
+                    link=$(echo "$line" | grep -o "\](.*\.md)" | sed 's/](\(.*\))/\1/')
+                    if [ ! -f "$(dirname "$file")/$link" ] && [ ! -f "$link" ]; then
+                      echo "❌ Broken link in $file: $link"
+                      exit 1
+                    fi
+                  done; then
+                    echo "✅ No broken internal links found"
+                  fi
+
+    test-scripts:
+        name: Test Scripts
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11"
+
+            - name: Test Python scripts syntax
+              run: |
+                  find scripts -name "*.py" -exec python -m py_compile {} \;
+                  echo "✅ All Python scripts compile successfully"
+
+            - name: Test Shell scripts syntax
+              run: |
+                  find scripts -name "*.sh" -exec bash -n {} \;
+                  echo "✅ All Shell scripts have valid syntax"
+
+            - name: Verify scripts are executable
+              run: |
+                  if find scripts -name "*.sh" ! -perm -u=x; then
+                    echo "❌ Some shell scripts are not executable"
+                    exit 1
+                  fi
+                  echo "✅ All scripts are executable"
+
+    security:
+        name: Security Checks
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Run secret detection
+              uses: trufflesecurity/trufflehog@main
+              with:
+                  extra_args: --only-verified --fail
+
+    summary:
+        name: CI Summary
+        runs-on: ubuntu-latest
+        needs: [lint, test-scripts, security]
+        if: always()
+        steps:
+            - name: Check results
+              run: |
+                  if [ "${{ needs.lint.result }}" != "success" ] || \
+                     [ "${{ needs.test-scripts.result }}" != "success" ] || \
+                     [ "${{ needs.security.result }}" != "success" ]; then
+                    echo "❌ CI failed - check job results above"
+                    exit 1
+                  fi
+                  echo "✅ All CI checks passed!"

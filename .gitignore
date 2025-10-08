@@ -11,20 +11,44 @@ ENV/
 build/
 dist/
 *.egg-info/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.coverage
+htmlcov/
 
 # Scripts virtual environment
 scripts/.venv/
 
-# IDE
+# Node.js (for markdown linting tools)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+
+# IDE & Editors
 .vscode/
 .idea/
 *.swp
 *.swo
 *~
+*.sublime-workspace
+*.sublime-project
 
 # OS
 .DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
 Thumbs.db
+Desktop.ini
+
+# Git & Pre-commit
+*.orig
+*.rej
 
 # Planning (optional - uncomment to keep planning private)
 # planning/current-sprint.md
@@ -36,3 +60,5 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.bak
+*.swp
+*~

@@ -9,26 +9,38 @@ git-project-planner/
 ├── README.md                    # Main overview and quick start
 ├── LICENSE                      # MIT License
 ├── VISION.md                    # Philosophy for hybrid teams
-├── USAGE_SCENARIOS.md           # 5 detailed usage patterns
-├── PUBLISH.md                   # Publication instructions
+├── STRUCTURE.md                 # This file - repository structure
+├── CONTRIBUTING.md              # Contribution guidelines
+├── CHANGELOG.md                 # Release notes and version history
 ├── .planner-config.yml          # Configuration template
-├── .gitignore                   # Standard ignores
+├── .gitignore                   # Multi-language ignores
+├── .pre-commit-config.yaml      # Git hooks configuration
+├── .markdownlint.json           # Markdown linting rules
+├── .secrets.baseline            # Secret detection baseline
+│
+├── .github/                     # CI/CD automation
+│   └── workflows/
+│       └── ci.yml              # Automated quality checks
 │
 ├── docs/                        # Complete documentation
-│   ├── PLANNING_SYSTEM.md      # System guide (860 lines)
+│   ├── PLANNING_SYSTEM.md      # System guide
 │   ├── WORKFLOW_GUIDE.md       # Daily workflow reference
-│   ├── AUTOMATION_GUIDE.md     # Scripts and CI/CD
+│   ├── AUTOMATION_GUIDE.md     # Scripts and CI/CD guide
 │   ├── GITHUB_SETUP.md         # GitHub Projects setup
-│   └── templates/              # 11 templates for tasks/sprints/issues
+│   ├── GIT_HOOKS_GUIDE.md      # Pre-commit hooks guide
+│   ├── USAGE_SCENARIOS.md      # Detailed usage patterns
+│   └── templates/              # Task, sprint, and issue templates
 │
-├── scripts/                     # 7 automation scripts
+├── scripts/                     # Automation scripts
 │   ├── setup-project.sh        # Initialize in new project
+│   ├── setup-hooks.sh          # Install Git hooks
+│   ├── setup-venv.sh           # Python environment
+│   ├── validate-all.sh         # Run all quality checks
 │   ├── sync-tasks.py/.sh       # Sync to GitHub Issues
 │   ├── update-sprint.sh        # Update sprint progress
 │   ├── sync-project-fields.sh  # Sync GitHub Project
 │   ├── link-issues-to-project.sh
-│   ├── setup-venv.sh           # Python environment
-│   └── requirements.txt
+│   └── requirements.txt        # Python dependencies
 │
 └── examples/                    # Universal examples
     ├── planning/               # Roadmap and sprint examples
@@ -37,11 +49,13 @@ git-project-planner/
 
 ## 📊 File Counts
 
-- **Core files**: 7 (README, LICENSE, VISION, etc.)
-- **Documentation**: 4 main docs + 11 templates
-- **Scripts**: 7 executable + 2 support files
+- **Core files**: 9 (README, LICENSE, VISION, CONTRIBUTING, CHANGELOG, etc.)
+- **Configuration**: 4 files (.pre-commit-config.yaml, .markdownlint.json, .secrets.baseline, .planner-config.yml)
+- **CI/CD**: 1 workflow file (.github/workflows/ci.yml)
+- **Documentation**: 6 main docs + 11 templates
+- **Scripts**: 10 executable + 1 support file (requirements.txt)
 - **Examples**: 5 universal examples
-- **Total**: ~40 files
+- **Total**: ~50 files
 
 ## 🎯 Key Files
 
@@ -49,16 +63,24 @@ git-project-planner/
 1. **README.md** - Start here
 2. **VISION.md** - Understand the philosophy
 3. **docs/PLANNING_SYSTEM.md** - Complete guide
+4. **CHANGELOG.md** - Version history and release notes
 
 ### For Setup
-1. **scripts/setup-project.sh** - Initialize
-2. **.planner-config.yml** - Configure
-3. **examples/** - Copy and adapt
+1. **scripts/setup-project.sh** - Initialize planning system
+2. **scripts/setup-hooks.sh** - Install Git hooks (quality checks)
+3. **.planner-config.yml** - Configure for your project
+4. **examples/** - Copy and adapt
+
+### For Development
+1. **CONTRIBUTING.md** - Contribution guidelines
+2. **docs/GIT_HOOKS_GUIDE.md** - Pre-commit hooks usage
+3. **docs/AUTOMATION_GUIDE.md** - CI/CD and scripts
+4. **scripts/validate-all.sh** - Run all checks locally
 
 ### For Usage
 1. **docs/WORKFLOW_GUIDE.md** - Daily workflows
-2. **docs/AUTOMATION_GUIDE.md** - Scripts
-3. **USAGE_SCENARIOS.md** - Patterns
+2. **docs/USAGE_SCENARIOS.md** - Usage patterns
+3. **docs/GITHUB_SETUP.md** - GitHub Projects integration
 
 ## 🔧 File Purposes
 
