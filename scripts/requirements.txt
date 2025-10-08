@@ -1,0 +1,7 @@
+# Python dependencies for planning automation scripts
+# Install via setup-venv.sh (creates .venv in this directory)
+
+python-frontmatter>=1.0.0
+PyYAML>=6.0
+click>=8.1.0
+rich>=13.5.0

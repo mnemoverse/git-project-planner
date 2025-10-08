@@ -1,0 +1,66 @@
+# Git Project Planner Configuration
+# Copy this file to your project root and customize
+
+# Repository settings
+repository:
+  owner: "your-org"           # GitHub organization or username
+  name: "your-project"        # Repository name
+
+# GitHub Project settings (optional)
+project:
+  number: 1                   # GitHub Project number
+  enabled: true               # Enable GitHub Project integration
+
+# Directory paths (relative to repository root)
+paths:
+  planning: "planning/"       # Sprint plans and roadmap
+  tasks: "tasks/"            # Task specifications
+  docs: "docs/"              # Documentation
+
+# Sprint settings
+sprint:
+  duration_days: 7           # Sprint length (typically 7 or 14)
+  start_day: 1               # 1=Monday, 7=Sunday
+  
+# Task labels (customize GitHub labels)
+labels:
+  status_prefix: "status:"   # e.g., status:ready, status:in-progress
+  priority_prefix: "priority:" # e.g., priority:high, priority:low
+  
+  # Status labels
+  status:
+    backlog: "status:backlog"
+    ready: "status:ready"
+    in_progress: "status:in-progress"
+    review: "status:review"
+    done: "status:done"
+    blocked: "status:blocked"
+  
+  # Priority labels
+  priority:
+    critical: "priority:critical"
+    high: "priority:high"
+    medium: "priority:medium"
+    low: "priority:low"
+
+# Automation settings
+automation:
+  auto_sync: false           # Automatically sync to GitHub on commit
+  create_issues: true        # Create GitHub Issues for new tasks
+  update_project: true       # Update GitHub Project fields
+  archive_done: true         # Archive completed items after 2 weeks
+
+# Estimation (Fibonacci)
+estimates:
+  - 1    # 1 hour
+  - 2    # 2 hours
+  - 4    # 4 hours (half day)
+  - 8    # 8 hours (full day)
+  - 16   # 2 days
+  - 32   # 4 days (consider splitting)
+
+# Templates
+templates:
+  task: "docs/templates/TASK_TEMPLATE.md"
+  sprint: "docs/templates/SPRINT_TEMPLATE.md"
+  milestone: "docs/templates/MILESTONE_TEMPLATE.md"
