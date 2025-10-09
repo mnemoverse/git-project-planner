@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-1. GitHub account with access to `mnemoverse/smartkeys-v2` repository
+1. GitHub account with access to `your-org/your-project` repository
 2. Permission to create projects in the organization
 3. GitHub CLI installed and authenticated (for post-setup automation)
 

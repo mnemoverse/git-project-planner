@@ -11,9 +11,32 @@ YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
-# Configuration
-REPO_OWNER="mnemoverse"
-REPO_NAME="smartkeys-v2"
+# Load configuration from .planner-config.yml
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG_FILE="$SCRIPT_DIR/../.planner-config.yml"
+
+if [ ! -f "$CONFIG_FILE" ]; then
+    echo -e "${RED}Error: Configuration file not found: $CONFIG_FILE${NC}"
+    echo "Please create .planner-config.yml in project root"
+    exit 1
+fi
+
+# Read repository config using yq or Python
+if command -v yq &> /dev/null; then
+    REPO_OWNER=$(yq e '.repository.owner' "$CONFIG_FILE")
+    REPO_NAME=$(yq e '.repository.name' "$CONFIG_FILE")
+else
+    # Fallback to Python
+    REPO_OWNER=$(python3 -c "import yaml; print(yaml.safe_load(open('$CONFIG_FILE'))['repository']['owner'])" 2>/dev/null || echo "")
+    REPO_NAME=$(python3 -c "import yaml; print(yaml.safe_load(open('$CONFIG_FILE'))['repository']['name'])" 2>/dev/null || echo "")
+fi
+
+if [ -z "$REPO_OWNER" ] || [ -z "$REPO_NAME" ]; then
+    echo -e "${RED}Error: Could not read repository config from $CONFIG_FILE${NC}"
+    echo "Make sure 'repository.owner' and 'repository.name' are set"
+    exit 1
+fi
+
 DRY_RUN=${DRY_RUN:-false}
 
 # Check prerequisites

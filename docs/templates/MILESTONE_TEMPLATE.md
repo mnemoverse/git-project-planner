@@ -139,7 +139,7 @@ Additional context, decisions, changes:
 ### Resources
 - 📄 [Architecture Doc](../architecture/ARCHITECTURE.md)
 - 💻 [RESEARCH-001](../research/RESEARCH-001-summary.md)
-- 🎯 [GitHub Project](https://github.com/mnemoverse/smartkeys-v2/projects/1)
+- 🎯 [GitHub Project](https://github.com/your-org/your-project/projects/1)
 
 ### Notes
 - Oct 2: Switched from Pattern A to Pattern B based on research

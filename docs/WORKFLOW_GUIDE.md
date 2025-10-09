@@ -121,7 +121,7 @@ grep -c "^- \[x\]" planning/current-sprint.md
 ### Project Board
 ```bash
 # Open in browser
-open https://github.com/mnemoverse/smartkeys-v2/projects/1
+open https://github.com/your-org/your-project/projects/1
 
 # Or via CLI
 gh project item-list 1 --owner mnemoverse --limit 20

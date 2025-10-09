@@ -202,7 +202,7 @@ None currently
 - AsyncEventCoordinator integration successful
 
 ### Links
-- 🎯 [GitHub Project](https://github.com/mnemoverse/smartkeys-v2/projects/1)
+- 🎯 [GitHub Project](https://github.com/your-org/your-project/projects/1)
 - 📊 [Pipeline Benchmarks](../research/RESEARCH-001-summary.md)
 
 ## Next Actions

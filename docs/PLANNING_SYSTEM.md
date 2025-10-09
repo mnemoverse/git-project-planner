@@ -180,7 +180,7 @@ tasks/
 
 ### Automation Rules
 
-1. **Auto-add to project**: All new issues with `smartkeys-v2` label
+1. **Auto-add to project**: All new issues with `your-project` label
 2. **Auto-close**: When PR merged with "Closes #XXX"
 3. **Auto-move**: To "Review" when PR created
 4. **Auto-archive**: Done items after 2 weeks
