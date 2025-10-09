@@ -47,35 +47,38 @@ Git Repository = Single Source of Truth
 
 > 💡 **Philosophy**: Everything in Git. Minimal external dependencies. Automate everything possible.
 
-## 🚀 Quick Start (5 minutes)
+## 🚀 Quick Start
 
-### Option 1: Copy to your project (recommended)
+**New here?** → Read **[QUICKSTART.md](QUICKSTART.md)** for a step-by-step guide with real-world examples!
 
-```bash
-# 1. Download
-git clone https://github.com/mnemoverse/git-project-planner.git
-cd git-project-planner
+### TL;DR: 3 integration options
 
-# 2. Copy to your project
-cp -r {docs,scripts,examples,.planner-config.yml} /path/to/your-project/
-cd /path/to/your-project
-
-# 3. Initialize
-./scripts/setup-project.sh --repo owner/repo-name
-
-# 4. Start working
-vim planning/current-sprint.md
-```
-
-### Option 2: Git Submodule (for multiple projects)
+#### Option 1: Git Submodule (recommended for active projects)
 
 ```bash
 cd /path/to/your-project
 git submodule add https://github.com/mnemoverse/git-project-planner .planner
-.planner/scripts/setup-project.sh --repo owner/repo-name
+cp .planner/.planner-config.yml .
+# Edit .planner-config.yml with your repo details
+.planner/scripts/setup-venv.sh
 ```
 
-### Option 3: Fork and customize (for organizations)
+**Pros**: Stay in sync with updates, clean separation  
+**Real example**: [SmartKeys v2 integration](QUICKSTART.md#real-world-example-smartkeys-v2-integration) (15 minutes, 59 tasks)
+
+#### Option 2: Direct Copy (for heavy customization)
+
+```bash
+git clone https://github.com/mnemoverse/git-project-planner.git /tmp/planner
+cp -r /tmp/planner/{scripts,docs,examples} /path/to/your-project/.planner/
+cp /tmp/planner/.planner-config.yml /path/to/your-project/
+# Edit and customize
+```
+
+**Pros**: Full control, no submodule complexity  
+**Cons**: Manual updates
+
+#### Option 3: Fork (for organizations)
 
 ```bash
 # Fork on GitHub → adapt to your needs

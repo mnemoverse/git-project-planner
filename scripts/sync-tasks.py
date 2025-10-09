@@ -117,7 +117,7 @@ except ModuleNotFoundError:  # pragma: no cover
 def load_config() -> Dict:
     """Load repository configuration from .planner-config.yml"""
     config_path = Path(__file__).parent.parent / ".planner-config.yml"
-    
+
     if not config_path.exists():
         print(
             f"⚠️  Configuration file not found: {config_path}\n"
@@ -125,21 +125,21 @@ def load_config() -> Dict:
             file=sys.stderr,
         )
         sys.exit(1)
-    
+
     try:
         with open(config_path, "r", encoding="utf-8") as f:
             config = yaml.safe_load(f)
-            
+
         # Validate required fields
         if "repository" not in config:
             print("⚠️  Missing 'repository' section in config", file=sys.stderr)
             sys.exit(1)
-            
+
         repo = config["repository"]
         if "owner" not in repo or "name" not in repo:
             print("⚠️  Missing 'owner' or 'name' in repository config", file=sys.stderr)
             sys.exit(1)
-            
+
         return config
     except yaml.YAMLError as e:
         print(f"⚠️  Error parsing config file: {e}", file=sys.stderr)
