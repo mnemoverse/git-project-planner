@@ -62,3 +62,7 @@ Desktop.ini
 *.bak
 *.swp
 *~
+
+# Benchmark results (keep history but exclude from repo)
+benchmarks/results/
+benchmarks/fixtures/output/

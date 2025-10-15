@@ -1,0 +1,67 @@
+{
+  "name": "sync_tasks",
+  "description": "Benchmarks for task synchronization and GitHub operations",
+  "timestamp": "2025-10-15T23:05:19.673315",
+  "operations": {
+    "parse_tasks": {
+      "elapsed_time": 0.006563745999983439,
+      "memory_mb": 0.04
+    },
+    "extract_metadata": {
+      "elapsed_time": 8.9537000008022e-05,
+      "memory_mb": 0.01
+    },
+    "validate_tasks": {
+      "elapsed_time": 1.052000004619913e-05,
+      "memory_mb": 0.0
+    },
+    "group_by_status": {
+      "elapsed_time": 2.0006999989163887e-05,
+      "memory_mb": 0.0
+    },
+    "filter_sort_tasks": {
+      "elapsed_time": 2.3473999988254945e-05,
+      "memory_mb": 0.0
+    },
+    "batch_operations": {
+      "elapsed_time": 0.0001637770000115779,
+      "memory_mb": 0.0
+    }
+  },
+  "summary": {
+    "total_time": 0.006871061000026657,
+    "avg_time": 0.001145176833337776,
+    "total_memory": 0.05,
+    "operations_count": 6
+  },
+  "metrics": {
+    "tasks_parsed": {
+      "value": 25,
+      "unit": "tasks"
+    },
+    "valid_tasks": {
+      "value": 25,
+      "unit": "tasks"
+    },
+    "validation_rate": {
+      "value": 100.0,
+      "unit": "%"
+    },
+    "status_groups": {
+      "value": 1,
+      "unit": "groups"
+    },
+    "batches_processed": {
+      "value": 5,
+      "unit": "batches"
+    },
+    "batch_size": {
+      "value": 5,
+      "unit": "tasks/batch"
+    },
+    "tasks_per_second": {
+      "value": 3638.4482687467057,
+      "unit": "tasks/s"
+    }
+  }
+}

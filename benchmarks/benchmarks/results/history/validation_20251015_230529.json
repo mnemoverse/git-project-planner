@@ -1,0 +1,63 @@
+{
+  "name": "validation",
+  "description": "Benchmarks for validation scripts and checks",
+  "timestamp": "2025-10-15T23:05:29.149398",
+  "operations": {
+    "shellcheck_syntax": {
+      "elapsed_time": 0.017116464000025644,
+      "memory_mb": 0.01
+    },
+    "python_syntax": {
+      "elapsed_time": 0.035817672000007406,
+      "memory_mb": 0.0
+    },
+    "yaml_validation": {
+      "elapsed_time": 0.18792912000003525,
+      "memory_mb": 0.75
+    },
+    "markdown_check": {
+      "elapsed_time": 0.0016834780000181127,
+      "memory_mb": 0.09
+    },
+    "task_naming_check": {
+      "elapsed_time": 0.00038629200003015285,
+      "memory_mb": 0.0
+    }
+  },
+  "summary": {
+    "total_time": 0.24293302600011657,
+    "avg_time": 0.048586605200023315,
+    "total_memory": 0.85,
+    "operations_count": 5
+  },
+  "metrics": {
+    "shell_scripts_checked": {
+      "value": 8,
+      "unit": "scripts"
+    },
+    "scripts_per_second": {
+      "value": 467.3862545434626,
+      "unit": "scripts/s"
+    },
+    "python_scripts_checked": {
+      "value": 1,
+      "unit": "scripts"
+    },
+    "yaml_files_checked": {
+      "value": 2,
+      "unit": "files"
+    },
+    "markdown_files_checked": {
+      "value": 11,
+      "unit": "files"
+    },
+    "task_files_validated": {
+      "value": 2,
+      "unit": "files"
+    },
+    "valid_task_names": {
+      "value": 0,
+      "unit": "files"
+    }
+  }
+}

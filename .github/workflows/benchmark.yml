@@ -1,0 +1,108 @@
+name: Benchmarks
+
+on:
+    pull_request:
+        branches: [main]
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pull-requests: write
+
+jobs:
+    benchmark:
+        name: Run Performance Benchmarks
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Setup Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11"
+                  cache: "pip"
+
+            - name: Install dependencies
+              run: |
+                  pip install --upgrade pip
+                  pip install python-frontmatter PyYAML
+
+            - name: Install system dependencies
+              run: |
+                  sudo apt-get update
+                  sudo apt-get install -y bc jq
+
+            - name: Run benchmarks
+              run: |
+                  cd benchmarks
+                  chmod +x run-benchmarks.sh
+                  ./run-benchmarks.sh
+
+            - name: Generate report
+              if: always()
+              run: |
+                  cd benchmarks
+                  chmod +x generate-report.sh
+                  ./generate-report.sh --show
+
+            - name: Upload benchmark results
+              if: always()
+              uses: actions/upload-artifact@v4
+              with:
+                  name: benchmark-results
+                  path: |
+                      benchmarks/results/*.json
+                      benchmarks/results/*.md
+                  retention-days: 30
+
+            - name: Check for performance regression
+              if: always()
+              run: |
+                  echo "🔍 Checking for performance regressions..."
+                  
+                  cd benchmarks/results
+                  regression_found=false
+                  
+                  for benchmark in file_operations validation sync_tasks; do
+                    latest="${benchmark}_latest.json"
+                    baseline="${benchmark}_baseline.json"
+                    
+                    if [ -f "$latest" ] && [ -f "$baseline" ]; then
+                      if command -v jq &> /dev/null; then
+                        baseline_time=$(jq -r '.summary.total_time // 0' "$baseline")
+                        current_time=$(jq -r '.summary.total_time // 0' "$latest")
+                        
+                        if [ "$baseline_time" != "0" ] && [ "$baseline_time" != "null" ]; then
+                          threshold=20  # 20% regression threshold
+                          diff=$(echo "scale=2; (($current_time - $baseline_time) / $baseline_time) * 100" | bc)
+                          
+                          echo "📊 $benchmark: ${diff}% vs baseline"
+                          
+                          if (( $(echo "$diff > $threshold" | bc -l) )); then
+                            echo "⚠️  WARNING: Performance regression detected in $benchmark: +${diff}%"
+                            regression_found=true
+                          fi
+                        fi
+                      fi
+                    fi
+                  done
+                  
+                  if [ "$regression_found" = true ]; then
+                    echo "::warning::Performance regression detected. Review benchmark results."
+                  else
+                    echo "✅ No significant performance regressions detected"
+                  fi
+
+    summary:
+        name: Benchmark Summary
+        runs-on: ubuntu-latest
+        needs: [benchmark]
+        if: always()
+        steps:
+            - name: Summary
+              run: |
+                  if [ "${{ needs.benchmark.result }}" = "success" ]; then
+                    echo "✅ Benchmarks completed successfully"
+                  else
+                    echo "⚠️  Benchmarks completed with issues - check logs"
+                  fi

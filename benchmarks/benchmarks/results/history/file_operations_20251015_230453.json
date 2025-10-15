@@ -1,0 +1,43 @@
+{
+  "name": "file_operations",
+  "description": "Benchmarks for file I/O, parsing, and validation",
+  "timestamp": "2025-10-15T23:04:53.513997",
+  "operations": {
+    "read_files": {
+      "elapsed_time": 0.0020461560000057943,
+      "memory_mb": 0.0
+    },
+    "parse_frontmatter": {
+      "elapsed_time": 0.01191530299996657,
+      "memory_mb": 0.01
+    },
+    "validate_structure": {
+      "elapsed_time": 0.011691233000021839,
+      "memory_mb": 0.0
+    },
+    "write_files": {
+      "elapsed_time": 0.00656803200001832,
+      "memory_mb": 0.01
+    }
+  },
+  "summary": {
+    "total_time": 0.032220724000012524,
+    "avg_time": 0.008055181000003131,
+    "total_memory": 0.02,
+    "operations_count": 4
+  },
+  "metrics": {
+    "files_processed": {
+      "value": 50,
+      "unit": "files"
+    },
+    "valid_files": {
+      "value": 50,
+      "unit": "files"
+    },
+    "files_per_second": {
+      "value": 4196.284391604669,
+      "unit": "files/s"
+    }
+  }
+}
