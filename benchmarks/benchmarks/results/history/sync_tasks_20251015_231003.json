@@ -1,36 +1,36 @@
 {
   "name": "sync_tasks",
   "description": "Benchmarks for task synchronization and GitHub operations",
-  "timestamp": "2025-10-15T23:05:19.673315",
+  "timestamp": "2025-10-15T23:10:03.090798",
   "operations": {
     "parse_tasks": {
-      "elapsed_time": 0.006563745999983439,
+      "elapsed_time": 0.006743681999978435,
       "memory_mb": 0.04
     },
     "extract_metadata": {
-      "elapsed_time": 8.9537000008022e-05,
+      "elapsed_time": 9.441700001389108e-05,
       "memory_mb": 0.01
     },
     "validate_tasks": {
-      "elapsed_time": 1.052000004619913e-05,
+      "elapsed_time": 1.0480000014467805e-05,
       "memory_mb": 0.0
     },
     "group_by_status": {
-      "elapsed_time": 2.0006999989163887e-05,
+      "elapsed_time": 2.0317999997132574e-05,
       "memory_mb": 0.0
     },
     "filter_sort_tasks": {
-      "elapsed_time": 2.3473999988254945e-05,
+      "elapsed_time": 2.408499994999147e-05,
       "memory_mb": 0.0
     },
     "batch_operations": {
-      "elapsed_time": 0.0001637770000115779,
+      "elapsed_time": 0.00016297499996653642,
       "memory_mb": 0.0
     }
   },
   "summary": {
-    "total_time": 0.006871061000026657,
-    "avg_time": 0.001145176833337776,
+    "total_time": 0.007055956999920454,
+    "avg_time": 0.0011759928333200758,
     "total_memory": 0.05,
     "operations_count": 6
   },
@@ -60,7 +60,7 @@
       "unit": "tasks/batch"
     },
     "tasks_per_second": {
-      "value": 3638.4482687467057,
+      "value": 3543.1054923211464,
       "unit": "tasks/s"
     }
   }

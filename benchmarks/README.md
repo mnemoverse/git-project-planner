@@ -17,15 +17,22 @@ The benchmark suite measures:
 ./benchmarks/run-benchmarks.sh
 ```
 
+### Set baseline for future comparisons
+```bash
+./benchmarks/run-benchmarks.sh --set-baseline
+```
+
 ### Run specific benchmark
 ```bash
 python3 benchmarks/benchmark_sync_tasks.py
 python3 benchmarks/benchmark_validation.py
+python3 benchmarks/benchmark_file_operations.py
 ```
 
 ### Generate report
 ```bash
 ./benchmarks/generate-report.sh
+./benchmarks/generate-report.sh --show  # Display in terminal
 ```
 
 ## Benchmark Structure

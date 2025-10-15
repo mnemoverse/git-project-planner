@@ -1,32 +1,32 @@
 {
   "name": "validation",
   "description": "Benchmarks for validation scripts and checks",
-  "timestamp": "2025-10-15T23:05:29.149398",
+  "timestamp": "2025-10-15T23:10:02.782171",
   "operations": {
     "shellcheck_syntax": {
-      "elapsed_time": 0.017116464000025644,
+      "elapsed_time": 0.016605534000063926,
       "memory_mb": 0.01
     },
     "python_syntax": {
-      "elapsed_time": 0.035817672000007406,
+      "elapsed_time": 0.036061368999980914,
       "memory_mb": 0.0
     },
     "yaml_validation": {
-      "elapsed_time": 0.18792912000003525,
+      "elapsed_time": 0.1905395139999655,
       "memory_mb": 0.75
     },
     "markdown_check": {
-      "elapsed_time": 0.0016834780000181127,
+      "elapsed_time": 0.0018124000000625529,
       "memory_mb": 0.09
     },
     "task_naming_check": {
-      "elapsed_time": 0.00038629200003015285,
+      "elapsed_time": 0.0004115399999591318,
       "memory_mb": 0.0
     }
   },
   "summary": {
-    "total_time": 0.24293302600011657,
-    "avg_time": 0.048586605200023315,
+    "total_time": 0.24543035700003202,
+    "avg_time": 0.049086071400006405,
     "total_memory": 0.85,
     "operations_count": 5
   },
@@ -36,7 +36,7 @@
       "unit": "scripts"
     },
     "scripts_per_second": {
-      "value": 467.3862545434626,
+      "value": 481.7671024592887,
       "unit": "scripts/s"
     },
     "python_scripts_checked": {

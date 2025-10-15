@@ -42,6 +42,16 @@ git-project-planner/
 │   ├── link-issues-to-project.sh
 │   └── requirements.txt        # Python dependencies
 │
+├── benchmarks/                  # Performance benchmarks
+│   ├── README.md               # Benchmark documentation
+│   ├── run-benchmarks.sh       # Main benchmark runner
+│   ├── generate-report.sh      # Report generator
+│   ├── benchmark_*.py          # Individual benchmarks
+│   ├── benchmark_utils.py      # Benchmark utilities
+│   ├── baseline_*.json         # Baseline performance data
+│   ├── fixtures/               # Test data
+│   └── results/                # Results (gitignored)
+│
 └── examples/                    # Universal examples
     ├── planning/               # Roadmap and sprint examples
     └── tasks/                  # Feature and bug fix examples
@@ -51,11 +61,12 @@ git-project-planner/
 
 - **Core files**: 9 (README, LICENSE, VISION, CONTRIBUTING, CHANGELOG, etc.)
 - **Configuration**: 4 files (.pre-commit-config.yaml, .markdownlint.json, .secrets.baseline, .planner-config.yml)
-- **CI/CD**: 1 workflow file (.github/workflows/ci.yml)
+- **CI/CD**: 2 workflow files (.github/workflows/ci.yml, benchmark.yml)
 - **Documentation**: 6 main docs + 11 templates
 - **Scripts**: 10 executable + 1 support file (requirements.txt)
+- **Benchmarks**: 6 benchmark scripts + 3 baseline files + documentation
 - **Examples**: 5 universal examples
-- **Total**: ~50 files
+- **Total**: ~60 files
 
 ## 🎯 Key Files
 
