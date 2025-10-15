@@ -63,6 +63,7 @@ Desktop.ini
 *.swp
 *~
 
-# Benchmark results (keep history but exclude from repo)
+# Benchmark results and generated files
 benchmarks/results/
 benchmarks/fixtures/output/
+benchmarks/fixtures/sample-tasks/*.md

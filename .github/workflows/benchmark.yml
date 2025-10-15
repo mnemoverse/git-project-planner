@@ -1,3 +1,4 @@
+---
 name: Benchmarks
 
 on:
@@ -59,36 +60,43 @@ jobs:
               if: always()
               run: |
                   echo "🔍 Checking for performance regressions..."
-                  
+
                   cd benchmarks/results
                   regression_found=false
-                  
+
                   for benchmark in file_operations validation sync_tasks; do
                     latest="${benchmark}_latest.json"
                     baseline="${benchmark}_baseline.json"
-                    
+
                     if [ -f "$latest" ] && [ -f "$baseline" ]; then
                       if command -v jq &> /dev/null; then
-                        baseline_time=$(jq -r '.summary.total_time // 0' "$baseline")
-                        current_time=$(jq -r '.summary.total_time // 0' "$latest")
-                        
-                        if [ "$baseline_time" != "0" ] && [ "$baseline_time" != "null" ]; then
+                        baseline_time=$(jq -r \
+                          '.summary.total_time // 0' "$baseline")
+                        current_time=$(jq -r \
+                          '.summary.total_time // 0' "$latest")
+
+                        if [ "$baseline_time" != "0" ] && \
+                           [ "$baseline_time" != "null" ]; then
                           threshold=20  # 20% regression threshold
-                          diff=$(echo "scale=2; (($current_time - $baseline_time) / $baseline_time) * 100" | bc)
-                          
+                          diff=$(echo "scale=2; \
+                            (($current_time - $baseline_time) / \
+                            $baseline_time) * 100" | bc)
+
                           echo "📊 $benchmark: ${diff}% vs baseline"
-                          
+
                           if (( $(echo "$diff > $threshold" | bc -l) )); then
-                            echo "⚠️  WARNING: Performance regression detected in $benchmark: +${diff}%"
+                            echo "⚠️  WARNING: Performance regression \
+                              detected in $benchmark: +${diff}%"
                             regression_found=true
                           fi
                         fi
                       fi
                     fi
                   done
-                  
+
                   if [ "$regression_found" = true ]; then
-                    echo "::warning::Performance regression detected. Review benchmark results."
+                    echo "::warning::Performance regression detected. \
+                      Review benchmark results."
                   else
                     echo "✅ No significant performance regressions detected"
                   fi
