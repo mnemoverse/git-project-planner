@@ -1,3 +1,15 @@
+<!--
+  GitHub Issue Template
+  
+  To use this template in your repository:
+  1. Copy this file to .github/ISSUE_TEMPLATE/issue_template.md
+  2. GitHub will automatically offer this template when creating new issues
+  
+  To use as a manual template:
+  1. Copy the content below when creating a new issue
+  2. Fill in the relevant sections
+-->
+
 ---
 name: Generic Issue Template
 about: Use this template for bugs, features, enhancements, or general tasks
