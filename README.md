@@ -208,18 +208,18 @@ Why this task matters...
 
 ## 📚 Complete Documentation
 
-| Document | Purpose | Read when |
-|----------|---------|-----------|
-| **[VISION.md](VISION.md)** | Philosophy and "why" | Before starting |
-| **[STRUCTURE.md](STRUCTURE.md)** | Repository structure | Navigating files |
-| **[docs/PLANNING_SYSTEM.md](docs/PLANNING_SYSTEM.md)** | Complete system guide | Setting up processes |
-| **[docs/WORKFLOW_GUIDE.md](docs/WORKFLOW_GUIDE.md)** | Daily commands | Quick reference |
-| **[docs/AUTOMATION_GUIDE.md](docs/AUTOMATION_GUIDE.md)** | Scripts and CI/CD | Setting up automation |
-| **[docs/GITHUB_SETUP.md](docs/GITHUB_SETUP.md)** | GitHub Projects | GitHub integration |
-| **[docs/GIT_HOOKS_GUIDE.md](docs/GIT_HOOKS_GUIDE.md)** | Pre-commit hooks | Quality setup |
-| **[docs/USAGE_SCENARIOS.md](docs/USAGE_SCENARIOS.md)** | Usage scenarios | Choosing approach |
-| **[CONTRIBUTING.md](CONTRIBUTING.md)** | How to contribute | Before PR |
-| **[CHANGELOG.md](CHANGELOG.md)** | Version history | Updates |
+| Document                                                 | Purpose               | Read when             |
+| -------------------------------------------------------- | --------------------- | --------------------- |
+| **[VISION.md](VISION.md)**                               | Philosophy and "why"  | Before starting       |
+| **[STRUCTURE.md](STRUCTURE.md)**                         | Repository structure  | Navigating files      |
+| **[docs/PLANNING_SYSTEM.md](docs/PLANNING_SYSTEM.md)**   | Complete system guide | Setting up processes  |
+| **[docs/WORKFLOW_GUIDE.md](docs/WORKFLOW_GUIDE.md)**     | Daily commands        | Quick reference       |
+| **[docs/AUTOMATION_GUIDE.md](docs/AUTOMATION_GUIDE.md)** | Scripts and CI/CD     | Setting up automation |
+| **[docs/GITHUB_SETUP.md](docs/GITHUB_SETUP.md)**         | GitHub Projects       | GitHub integration    |
+| **[docs/GIT_HOOKS_GUIDE.md](docs/GIT_HOOKS_GUIDE.md)**   | Pre-commit hooks      | Quality setup         |
+| **[docs/USAGE_SCENARIOS.md](docs/USAGE_SCENARIOS.md)**   | Usage scenarios       | Choosing approach     |
+| **[CONTRIBUTING.md](CONTRIBUTING.md)**                   | How to contribute     | Before PR             |
+| **[CHANGELOG.md](CHANGELOG.md)**                         | Version history       | Updates               |
 
 ---
 
