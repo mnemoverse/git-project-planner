@@ -62,3 +62,9 @@ Desktop.ini
 *.bak
 *.swp
 *~
+
+# Benchmark results and generated files
+benchmarks/results/
+benchmarks/fixtures/output/
+benchmarks/fixtures/sample-tasks/*.md
+benchmarks/__pycache__/
