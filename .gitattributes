@@ -1,0 +1,28 @@
+# Auto normalize line endings for all text files
+* text=auto
+
+# Python source code - force LF
+*.py text eol=lf
+*.pyi text eol=lf
+
+# Shell scripts - force LF
+*.sh text eol=lf
+
+# Config files - force LF
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+
+# Documentation - force LF
+*.md text eol=lf
+*.txt text eol=lf
+
+# Binary files - no conversion
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.pdf binary
+*.woff binary
+*.woff2 binary
