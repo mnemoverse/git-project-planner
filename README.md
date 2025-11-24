@@ -223,6 +223,32 @@ Why this task matters...
 
 ---
 
+## 📊 Performance & Benchmarks
+
+Git Project Planner includes a comprehensive benchmark suite to measure and track performance:
+
+```bash
+# Run all benchmarks
+./benchmarks/run-benchmarks.sh
+
+# Generate performance report
+./benchmarks/generate-report.sh
+```
+
+**What we measure:**
+- File parsing and validation speed
+- Script execution performance
+- Task synchronization operations
+
+**Performance targets:**
+- Task file parsing: < 0.1s per file
+- Validation scripts: < 5s total
+- Sync operations: < 1s per task
+
+See [benchmarks/README.md](benchmarks/README.md) for details.
+
+---
+
 ## 🛠️ Requirements
 
 **Minimum:**
@@ -230,7 +256,7 @@ Why this task matters...
 - Bash 4.0+
 
 **Optional (for full functionality):**
-- Python 3.8+ (for automation scripts)
+- Python 3.8+ (for automation scripts and benchmarks)
 - GitHub CLI `gh` (for GitHub sync)
 - pre-commit framework (for Git hooks)
 
